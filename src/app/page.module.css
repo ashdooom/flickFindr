@@ -11,19 +11,15 @@
 
 
 .page {
-  margin: 0; 
-  padding: 0; 
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center; 
-  justify-content: center;
-  height: 100vh; 
-  opacity: 0; 
-  animation: fadeIn 1s forwards; 
 }
 
 .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   color: white;
   position: sticky;
@@ -218,8 +214,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10vh;
+  top: 0;
   width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px 20px;
+  z-index: 1000;
+  position: sticky;
 }
 
 .signContainer {
@@ -373,8 +373,6 @@
   padding: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 50%;
-  margin-bottom: 10vh;
 }
 
 .commentForm {
@@ -387,6 +385,7 @@
   width: 100%;
   max-width: 600px;
   padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 10px;
   resize: none; 
@@ -394,6 +393,7 @@
 
 .submitButton {
   background-color: #5a5a5a;
+  color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -405,21 +405,26 @@
 }
 
 
-@media (min-width: 700px) {
+
+@media (min-width: 932px) {
 
   .page {
     display: grid;
     grid-template-rows: 20px 1fr 20px;
     align-items: center;
     justify-items: center;
-    padding: 0;
+    min-height: 100svh;
+    padding: 80px;
     font-family: var(--font-geist-sans);
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 3vh;
   }
 
   .header {
     border: #ccc 2px solid;
-    height: auto;
+    height: 10vh;
     width: 90%;
     max-width: 500px;
     color: #ccc;
@@ -427,7 +432,6 @@
     text-align: center;
     margin-right: 5vh;
     position: relative;
-    margin: 0;
   }
 
 
@@ -441,7 +445,6 @@
 
   .main {
     align-items: center;
-    margin-top: 20px;
   }
 
   .input {
@@ -503,14 +506,10 @@
   }
 
   .logo {
-    width: 50%; 
+    width: 50%;
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    margin: 0; 
-    top: 0; 
-    opacity: 0; 
-    animation: fadeIn 2s forwards; 
+    justify-content: center;
+    align-items: center;
   }
 
   .input {
@@ -571,9 +570,13 @@
   
   .navigation {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    position: sticky;
     top: 0;
     width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
     z-index: 1000;
   }
   
@@ -630,24 +633,8 @@
     margin: 10vh;
   }
 
-  .carousel {
-    height: auto; 
-    width: auto;
-    max-width: 1000px;
-    margin: auto; 
-    margin-top: 5vh; 
-  }
 }
 
-
-@keyframes fadeIn {
-  from {
-    opacity: 0; 
-  }
-  to {
-    opacity: 1;
-  }
-}
 
 @media (prefers-color-scheme: dark) {
   .logo {

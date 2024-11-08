@@ -84,7 +84,7 @@ export default function Home() {
     <div className={styles.page}>
       <nav className={styles.navigation}>
         <Link href="/" className={styles.logo} onClick={handleLogoClick}>
-          <Image src={logo} alt="Logo" width={300} height={100} />
+          <Image className={styles.logo} src={logo} alt="Logo" width={300} height={100} />
         </Link>
         <div className={styles.signContainer}>
           <Link className={styles.sign} href="/signinsignup">sign in</Link>
@@ -147,11 +147,6 @@ export default function Home() {
                   className={styles.commentInput}
                   rows="4"
                 />
-                  <StarRating
-                    rating={comments.rating}
-                    setRating={(rating) => updateRating(comments.id, rating)}
-                    className={styles.starRating}
-                  />
                 <button type="submit" className={styles.submitButton}>Submit</button>
               </form>
             </div>
@@ -175,10 +170,10 @@ export default function Home() {
               <h2 style={{ textAlign: "center" }}>All Comments</h2>
               {allComments.map((comment) => (
                 <div key={comment.id} className={styles.comment}>
-                  {comments.text}
+                  {comment.text}
                   <StarRating
-                    rating={comments.rating}
-                    setRating={(rating) => updateRating(comments.id, rating)}
+                    rating={comment.rating}
+                    setRating={(rating) => updateRating(comment.id, rating)}
                     className={styles.starRating}
                   />
                 </div>
