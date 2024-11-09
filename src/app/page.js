@@ -10,6 +10,7 @@ import StarRating from "./components/Stars";
 import Slideshow from "./components/Slideshow";
 import Image from "next/image";
 import logo from "/public/logo.png";
+import { useSwipeable } from "react-swipeable";
 
 export default function Home() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -83,6 +84,15 @@ export default function Home() {
     }
   };
 
+  const [swiped, setSwiped] = useState(false);
+
+  const swipeHandlers = useSwipeable({
+    onSwipedRight: () => setSwiped(true),
+    onSwipedLeft: () => setSwiped(false),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
+
   return (
     <div className={styles.page}>
       <nav className={styles.navigation}>
@@ -98,8 +108,8 @@ export default function Home() {
           </button>
           <button
             type="button">
-          <Link className={styles.sign} href="/signinsignup">sign up</Link>
-          <FontAwesomeIcon icon={faUserPlus} color="#ccc" size="lg" />
+            <Link className={styles.sign} href="/signinsignup">sign up</Link>
+            <FontAwesomeIcon icon={faUserPlus} color="#ccc" size="lg" />
           </button>
         </div>
       </nav>
@@ -136,21 +146,41 @@ export default function Home() {
                 </div>
               )}
             </div>
+
             <div className={styles.pop}>popular searches..</div>
             <div className={styles.popLinks}>
-              <Link href='/' className={styles.popLinks}>happy;</Link>
-              <Link href='/' className={styles.popLinks}>sad;</Link>
-              <Link href='/' className={styles.popLinks}>angry;</Link>
-              <Link href='/' className={styles.popLinks}>funny;</Link>
+              <Link href="/" className={styles.popLinks}>happy;</Link>
+              <Link href="/" className={styles.popLinks}>sad;</Link>
+              <Link href="/" className={styles.popLinks}>angry;</Link>
+              <Link href="/" className={styles.popLinks}>funny;</Link>
             </div>
             <div className={styles.trending}>🔥trending auditions🔥</div>
-            <div className={styles.carousel}>
-              <VideoCarousel />
+
+            <div className={styles.contentWrapper}>
+              <div className={styles.carousel}>
+                <VideoCarousel />
+              </div>
+              <div className={`${styles.contentWrapper} ${swiped ? styles.swiped : ""}`} {...swipeHandlers}>
+                <div className={styles.commentsContainer}>
+                  <h2 className={styles.top} style={{ textAlign: "center" }}>Top Comments</h2>
+                  <div className={styles.comment}>
+                    {comments[currentCommentIndex].text}
+                    <StarRating
+                      rating={comments[currentCommentIndex].rating}
+                      setRating={(rating) => updateRating(comments[currentCommentIndex].id, rating)}
+                      className={styles.starRating}
+                    />
+                  </div>
+                </div>
+                <div className={styles.navigation}>
+                  <button onClick={prevComment} className={styles.navButton}>❮</button>
+                  <button onClick={nextComment} className={styles.navButton}>❯</button>
+                </div>
+              </div>
             </div>
 
-            {/* Comment Box */}
             <div className={styles.commentBox}>
-              <h2 style={{ textAlign: "center" }}>Leave a Comment</h2>
+              <h2 style={{ textAlign: "center", marginTop: "5vh" }}>Leave a Comment</h2>
               <form onSubmit={handleCommentSubmit} className={styles.commentForm}>
                 <textarea
                   value={commentInput}
@@ -163,21 +193,6 @@ export default function Home() {
               </form>
             </div>
 
-            <div className={styles.commentsContainer}>
-              <h2 style={{ textAlign: "center" }}>Top Comments</h2>
-              <div className={styles.comment}>
-                {comments[currentCommentIndex].text}
-                <StarRating
-                  rating={comments[currentCommentIndex].rating}
-                  setRating={(rating) => updateRating(comments[currentCommentIndex].id, rating)}
-                  className={styles.starRating}
-                />
-              </div>
-              <div className={styles.navigation}>
-                <button onClick={prevComment} className={styles.navButton}>❮</button>
-                <button onClick={nextComment} className={styles.navButton}>❯</button>
-              </div>
-            </div>
             <div className={styles.allComments}>
               <h2 style={{ textAlign: "center" }}>All Comments</h2>
               {allComments.map((comment) => (

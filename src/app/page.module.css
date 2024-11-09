@@ -146,6 +146,7 @@
   max-width: 1000px;
   margin: auto;
   margin-top: 5vh;
+  left: 10%;
 }
 
 .videoContainer {
@@ -153,14 +154,13 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 90vh;
-  height: 90vh;
-  margin-left: 8vh;
+  width: 100%;
+  right: 20%;
 }
 
 .video {
-  width: 120%;
-  height: 100%;
+  width: 80%;
+  height: 80vh;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -202,16 +202,56 @@
   background-color: #000000;
   width: 50%;
   position: relative;
-}
-
-.comment {
-  padding: 10px;
-  text-align: center;
-  font-size: 1.2em;
-  color: #fff;
+  margin-top: 10vh;
+  height: 80vh;
   margin: 10vh;
 }
 
+.commentBox {
+  padding: 15px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  background-color: #f5f5f5;
+  left: 1%;
+
+}
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.commentInput {
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: auto;
+}
+
+.comment {
+  text-align: center;
+  margin: 5vh;
+}
+
+.submitButton {
+  padding: 10px 20px;
+  background-color: #5a5a5a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: #404040;
+}
 .navigation {
   display: flex;
   flex-direction: column;
@@ -250,6 +290,7 @@
   border-radius: 5px;
   font-size: 24px;
   margin: 0 5px;
+  visibility: hidden;
 }
 
 .navButton:hover {
@@ -261,7 +302,7 @@
   border: 1px solid #ccc;
   padding: 10vh;
   margin-top: 5vh;
-  width: 50%;
+  width: 90%;
   border-radius: 5px;
   border-top: #ccc 1px solid;
 }
@@ -377,41 +418,6 @@
   text-align: center;
 }
 
-.commentBox {
-  margin-top: 20px;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.commentForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.commentInput {
-  width: 100%;
-  max-width: 600px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  resize: none; 
-}
-
-.submitButton {
-  background-color: #5a5a5a;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.submitButton:hover {
-  background-color: #404040;
-}
 
 .sign {
   position: relative;
@@ -426,6 +432,25 @@
   color: white;
   cursor: pointer; 
 }
+
+.commentBox {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  position: relative;
+  width: 90%;
+  height: 30vh;
+  background-color: transparent;
+}
+
+.contentWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  gap: 20px; 
+}
+
 
 @media (min-width: 932px) {
 
@@ -578,8 +603,9 @@
     border-radius: 5px;
     margin-top: 20px;
     background-color: #000000;
-    width: 50%;
+    width: 30%;
     position: relative;
+    margin-top: 10vh;
   }
   
   .comment {
