@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from "./page.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faRightToBracket, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import VideoCarousel from "./components/Carousel";
 import StarRating from "./components/Stars";
@@ -16,6 +16,8 @@ export default function Home() {
   const [showSlideshow, setShowSlideshow] = useState(true);
   const [currentCommentIndex, setCurrentCommentIndex] = useState(0);
   const [commentInput, setCommentInput] = useState("");
+  const [isLogoCentered, setIsLogoCentered] = useState(true);
+
 
   const [comments, setComments] = useState([
     { id: 1, text: "Awesome", rating: 0 },
@@ -64,6 +66,7 @@ export default function Home() {
 
   const handleLogoClick = () => {
     setShowSlideshow(false);
+    setIsLogoCentered(false);
   };
 
   const handleDropdownItemClick = (item) => {
@@ -72,23 +75,32 @@ export default function Home() {
   };
 
   const handleCommentSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     if (commentInput.trim() !== "") {
-      const newComment = { id: Date.now(), text: commentInput, rating: 0 }; 
+      const newComment = { id: Date.now(), text: commentInput, rating: 0 };
       setAllComments((prev) => [...prev, newComment]);
-      setCommentInput(""); 
+      setCommentInput("");
     }
   };
 
   return (
     <div className={styles.page}>
       <nav className={styles.navigation}>
-        <Link href="/" className={styles.logo} onClick={handleLogoClick}>
+        <Link href="/" onClick={handleLogoClick} className={styles.logoContainer}>
           <Image className={styles.logo} src={logo} alt="Logo" width={300} height={100} />
         </Link>
         <div className={styles.signContainer}>
-          <Link className={styles.sign} href="/signinsignup">sign in</Link>
+          <button
+            type="button"
+          >
+            <Link className={styles.sign} href="/signinsignup">sign in</Link>
+            <FontAwesomeIcon icon={faRightToBracket} color="#ccc" size="lg" />
+          </button>
+          <button
+            type="button">
           <Link className={styles.sign} href="/signinsignup">sign up</Link>
+          <FontAwesomeIcon icon={faUserPlus} color="#ccc" size="lg" />
+          </button>
         </div>
       </nav>
 
