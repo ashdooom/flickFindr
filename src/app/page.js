@@ -18,6 +18,8 @@ export default function Home() {
   const [currentCommentIndex, setCurrentCommentIndex] = useState(0);
   const [commentInput, setCommentInput] = useState("");
   const [isLogoCentered, setIsLogoCentered] = useState(true);
+  const [swiped, setSwiped] = useState(false);
+
 
 
   const [comments, setComments] = useState([
@@ -84,8 +86,6 @@ export default function Home() {
     }
   };
 
-  const [swiped, setSwiped] = useState(false);
-
   const swipeHandlers = useSwipeable({
     onSwipedRight: () => setSwiped(true),
     onSwipedLeft: () => setSwiped(false),
@@ -96,6 +96,9 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <nav className={styles.navigation}>
+        <h1>
+          flickFindr
+        </h1>
         <Link href="/" onClick={handleLogoClick} className={styles.logoContainer}>
           <Image className={styles.logo} src={logo} alt="Logo" width={300} height={100} />
         </Link>
@@ -155,11 +158,31 @@ export default function Home() {
               <Link href="/" className={styles.popLinks}>funny;</Link>
             </div>
             <div className={styles.trending}>🔥trending auditions🔥</div>
-
+            <div className={styles.navColumn}>
+              <div className={styles.navColumn}>
+                <div className={styles.navColumnTxt}>
+                  <h1 className={styles.flickFindr}>flickFindr</h1>
+                  <Image src={logo} className={styles.logoNav} />
+                  <button className={styles.columnBtn}>
+                    <h2>Auditions</h2>
+                  </button>
+                  <button className={styles.columnBtn}>
+                    <h2>Directors</h2>
+                  </button>
+                  <button className={styles.columnBtn}>
+                    <h2>Scripts</h2>
+                  </button>
+                  <button className={styles.columnBtn}>
+                    <h2>Film Crew</h2>
+                  </button>
+                </div>
+              </div>
+            </div>
             <div className={styles.contentWrapper}>
               <div className={styles.carousel}>
                 <VideoCarousel />
               </div>
+
               <div className={`${styles.contentWrapper} ${swiped ? styles.swiped : ""}`} {...swipeHandlers}>
                 <div className={styles.commentsContainer}>
                   <h2 className={styles.top} style={{ textAlign: "center" }}>Top Comments</h2>
@@ -209,6 +232,7 @@ export default function Home() {
           </>
         )}
       </main>
+
     </div>
   );
 }
