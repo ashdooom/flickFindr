@@ -272,11 +272,12 @@
 .signContainer {
   display: flex;
   gap: 15px;
-  margin: 5vh;
+  margin: 0;
 }
 
 .sign {
   color: white; 
+  margin: 0;
 }
 
 
@@ -465,7 +466,7 @@
 }
 
 .flickFindr {
-  margin-bottom: 5vh;
+  margin-bottom: 5vh; 
   margin-top: 5vh;
 }
 
@@ -473,6 +474,11 @@
   height: 10vh;
   width: 20vh;
   margin-top: 0;
+}
+
+.logoNav:hover {
+  background-color:#1a1a1a;
+  cursor: pointer;
 }
 
 .navColumnTxt {
@@ -498,6 +504,9 @@
   background-color: #1a1a1a;
 }
 
+.hamburgerContainer {
+  visibility: hidden;
+}
 
 @media (min-width: 932px) {
 
@@ -510,7 +519,6 @@
     padding: 80px;
     font-family: var(--font-geist-sans);
     width: 100%;
-    margin-top: 3vh;
   }
 
   .header {
@@ -751,7 +759,6 @@
   .signContainer {
     display: flex;
     align-items: center; 
-    margin-bottom: 0;
   }
 
   .sign {

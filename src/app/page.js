@@ -96,9 +96,6 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <nav className={styles.navigation}>
-        <h1>
-          flickFindr
-        </h1>
         <Link href="/" onClick={handleLogoClick} className={styles.logoContainer}>
           <Image className={styles.logo} src={logo} alt="Logo" width={300} height={100} />
         </Link>
@@ -159,23 +156,26 @@ export default function Home() {
             </div>
             <div className={styles.trending}>🔥trending auditions🔥</div>
             <div className={styles.navColumn}>
-              <div className={styles.navColumn}>
-                <div className={styles.navColumnTxt}>
-                  <h1 className={styles.flickFindr}>flickFindr</h1>
+              <div className={styles.navColumnTxt}>
+                <h1 className={styles.flickFindr}>flickFindr</h1>
+                <Link href="/">
                   <Image src={logo} className={styles.logoNav} />
+                </Link>
+                <Link href="/auditions">
                   <button className={styles.columnBtn}>
                     <h2>Auditions</h2>
                   </button>
-                  <button className={styles.columnBtn}>
-                    <h2>Directors</h2>
-                  </button>
-                  <button className={styles.columnBtn}>
-                    <h2>Scripts</h2>
-                  </button>
-                  <button className={styles.columnBtn}>
-                    <h2>Film Crew</h2>
-                  </button>
-                </div>
+                </Link>
+
+                <button className={styles.columnBtn}>
+                  <h2>Directors</h2>
+                </button>
+                <button className={styles.columnBtn}>
+                  <h2>Scripts</h2>
+                </button>
+                <button className={styles.columnBtn}>
+                  <h2>Film Crew</h2>
+                </button>
               </div>
             </div>
             <div className={styles.contentWrapper}>
